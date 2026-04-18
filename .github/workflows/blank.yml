@@ -1,0 +1,24 @@
+name: Update Deployment
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Inject commit SHA
+      run: |
+        sed -i "s|\${GIT_COMMIT_SHA}|${GITHUB_SHA}|g" deployment.yaml
+
+    - name: Commit updated manifest
+      run: |
+        git config user.name "github-actions"
+        git config user.email "github-actions@github.com"
+        git add deployment.yaml
+        git commit -m "Update redeploy trigger"
+        git push
