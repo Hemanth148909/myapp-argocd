@@ -1,11 +1,10 @@
-name: Update Deployment
+name: Update Deployment Manually
 
 on:
-  push:
-    branches: [ "main" ]
+  workflow_dispatch:   # 🔥 manual trigger from GitHub UI
 
 permissions:
-  contents: write   # 🔥 REQUIRED
+  contents: write
 
 jobs:
   deploy:
@@ -23,5 +22,5 @@ jobs:
         git config user.name "github-actions"
         git config user.email "github-actions@github.com"
         git add argocd-app/deployment.yaml
-        git commit -m "Update redeploy trigger" || echo "No changes"
+        git commit -m "Manual redeploy trigger" || echo "No changes"
         git push
