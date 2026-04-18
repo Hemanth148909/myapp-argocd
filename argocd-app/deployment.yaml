@@ -15,7 +15,7 @@ spec:
 
       # 🔥 This is the key: changes every commit = triggers rollout
       annotations:
-        redeployTimestamp: "${GIT_COMMIT_SHA}"
+        redeployTimestamp: "fa31d7e28955738db770a963463004fb3f7f3400"
 
     spec:
       containers:
