@@ -13,8 +13,9 @@ spec:
       labels:
         app: nginx
 
+      # 🔥 This is the key: changes every commit = triggers rollout
       annotations:
-        redeployTimestamp: "v5"
+        redeployTimestamp: "${GIT_COMMIT_SHA}"
 
     spec:
       containers:
