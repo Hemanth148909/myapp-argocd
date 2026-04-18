@@ -7,10 +7,16 @@ spec:
   selector:
     matchLabels:
       app: nginx
+
   template:
     metadata:
       labels:
         app: nginx
+
+      # 🔥 This is the key: changes every commit = triggers rollout
+      annotations:
+        redeployTimestamp: "${GIT_COMMIT_SHA}"
+
     spec:
       containers:
       - name: nginx
