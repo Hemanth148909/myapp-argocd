@@ -14,7 +14,7 @@ spec:
         app: nginx
 
       annotations:
-        redeployTimestamp: "v1"
+        redeployTimestamp: "v3"
 
     spec:
       containers:
