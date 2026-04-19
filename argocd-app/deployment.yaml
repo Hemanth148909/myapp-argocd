@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx
+
 spec:
   replicas: 10
   selector:
@@ -13,13 +14,25 @@ spec:
       labels:
         app: nginx
 
-      # 🔥 This is the key: changes every commit = triggers rollout
       annotations:
-        redeployTimestamp: "fa31d7e28955738db770a963463004fb3f7f3400"
+        # 🔥 Risky: changes every deployment → triggers rollout
+        redeployTimestamp: "2026-04-19T10:15:00Z"
+
+        # 🔥 Risky: changes every commit → forces diff
+        gitCommit: "fa31d7e28955738db770a963463004fb3f7f3400"
+
+        # 🔥 Risky: CI/CD build identity changes every run
+        buildId: "build-12345"
+
+        # 🔥 Risky: often generated dynamically in Jsonnet/libsonnet
+        configHash: "a8f3c91d2b"
+
+        # 🔥 Risky: sometimes derived from std.now() or extVars
+        deployVersion: "v1.0.20260419"
 
     spec:
       containers:
       - name: nginx
-        image: nginx:1.25
+        image: nginx
         ports:
         - containerPort: 80
