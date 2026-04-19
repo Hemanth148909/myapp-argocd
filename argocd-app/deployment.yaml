@@ -16,13 +16,13 @@ spec:
 
       annotations:
         # 🔥 Risky: changes every deployment → triggers rollout
-        redeployTimestamp: "2026-04-19T10:15:00Z"
+        redeployTimestamp: "2026-04-19T10:16:00Z"
 
         # 🔥 Risky: changes every commit → forces diff
         gitCommit: "fa31d7e28955738db770a963463004fb3f7f3400"
 
         # 🔥 Risky: CI/CD build identity changes every run
-        buildId: "build-12345"
+        buildId: "build-6789"
 
         # 🔥 Risky: often generated dynamically in Jsonnet/libsonnet
         configHash: "a8f3c91d2b"
